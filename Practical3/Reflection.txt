@@ -1,5 +1,5 @@
 This is an example file for reflection in IBI1_2025-26.
-
+But I don't know how to write down my feeling
 During this course, I have learnt version control, how to navigate Unix-like systems and how to write simple programs in Python.
 
 I am going to edit this file to show changes in the lecture
