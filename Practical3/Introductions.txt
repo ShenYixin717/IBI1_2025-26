@@ -1,4 +1,4 @@
 Hello, my name is ShenYixin.
-I like drinking tea and eating chocolate biscuits.
-I am enjoying teaching IBI1 in person again 
+I like drinking tea, too.
+I am enjoying studying in IBI1 class again 
 I am happy that I can push my repo from Visual Studio Code to GitHub
