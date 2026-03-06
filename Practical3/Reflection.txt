@@ -1,5 +1,10 @@
 This is an example file for reflection in IBI1_2025-26.
-But I don't know how to write down my feeling
-During this course, I have learnt version control, how to navigate Unix-like systems and how to write simple programs in Python.
+But I am not quite sure about how to write down my feeling.
 
-I am going to edit this file to show changes in the lecture
+This practical session helped me understand the core value of version control—solving the problem of messy file versions in daily study and research. Compared with manually renaming files like "final_v2.txt", Git's branch and commit mechanism makes version management more systematic.
+
+The biggest difficulty was resolving the conflict when merging branches: when I modified the "thingsIlike.txt" in both the master branch and the friend-named branch, Git prompted a conflict, and I spent some time figuring out how to delete the conflict markers (<<<<<<<, =======, >>>>>>>) and retain the correct content.
+It took me a while to remember the order of Git commands (add → commit → push), and I once forgot to "git add" before "git commit", resulting in an error.
+
+When should I use "git revert" vs "git checkout -- filename"? I'm not sure about the difference in their application scenarios and whether they will affect the commit history differently.
+For the GitHub Pages personal website, why does the theme take several minutes to take effect after selection? Is there a way to speed up the deployment? Is it safe for us to use a set proxy for submiting?
