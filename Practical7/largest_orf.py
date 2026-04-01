@@ -5,6 +5,7 @@ start = 'AUG'
 stop = 'UAG|UGA|UAA'
 
 # find all the ORF
+ORF = []
 ORF = re.findall(rf'{start}.*?(?:{stop})', seq)
 print(ORF)
 
