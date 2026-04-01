@@ -39,7 +39,6 @@ with open(output_file, "w") as out_f:
         seq = record['seq'][i]
         found_stops = set() # delete duplicates
         pattern = re.compile(rf'ATG(?:...)*?({stop})')
-        found_stops = set()
         for match in pattern.finditer(seq):
             if (match.end(1) - match.start()) % 3 == 0:
                 found_stops.add(match.group(1))
