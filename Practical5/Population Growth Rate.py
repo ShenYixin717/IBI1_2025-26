@@ -21,8 +21,6 @@ df = pd.DataFrame(data)
 
 #sort the data by percentage change
 df["Percent_Change"] = ((df["Population_2024"] - df["Population_2020"]) / df["Population_2020"]) * 100
-
-#sort the data by percentage change
 print("Percentage Population Change for Each Country:")
 print(df[["Country", "Percent_Change"]].round(2))
 print("\nSorted Population Changes (Descending):")

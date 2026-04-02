@@ -5,6 +5,9 @@
 4.Pie chart creation for visualizing category proportions
 5.Formatted output of all results
 '''
+
+import matplotlib.pyplot as plt
+
 # Heart Rate Analysis
 heart_rates	=[72,60,126,85,90,59,76,131,88,121,64]
 print(f"There are {len(heart_rates)} heart rate measurements in the dataset and the mean heart rate is {sum(heart_rates)/len(heart_rates):.2f} bpm.")
@@ -33,7 +36,6 @@ largest_category=max(n, key=n.get)
 print(f"\nThe largest category is '{largest_category}' with {n[largest_category]}")
 
 #create	a pie chart
-import matplotlib.pyplot as plt
 labels = ['Below Normal', 'Normal', 'Above Normal']
 sizes = [n_low, n_normal, n_high]
 colors = ['lightcoral', 'lightgreen', 'lightblue']

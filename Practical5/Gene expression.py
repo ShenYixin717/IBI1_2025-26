@@ -9,11 +9,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 #Create a DataFrame with gene expression data
 data = {"Gene":["TP53","EGFR","BRCA1","PTEN","ESR1"],"Expression":[12.4,15.1,8.2,5.3,10.7]}
+print("The initial data is",data)
 df = pd.DataFrame(data)
-print(df)
+
 #Add a new row to the DataFrame
 new_row = {"Gene": "MYC", "Expression": 11.6}
 df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+print("The data that adds a gene is:")
 print(df)
 
 #Plot the gene expression levels
@@ -21,7 +23,7 @@ ax = df.plot(x="Gene", y="Expression", kind="bar", legend=False)
 ax.set_xlabel("Gene")
 ax.set_ylabel("Expression Level")
 ax.set_title("Gene Expression Levels")
-ax.set_xticklabels(df["Gene"], rotation=45)
+ax.set_xticklabels(df["Gene"], rotation = 45)
 ax.grid(axis="y")
 plt.show()
 

@@ -1,4 +1,3 @@
-# Pseudo-code Planning
 # 1. Define user parameters: age, weight, gender, serum creatinine concentration (Cr)
 # 2. Validate input parameters:
 #    - Age < 100 years
@@ -25,15 +24,15 @@ if age >= 100:
     is_valid = False
     error_msg = "Age must be less than 100 years."
 # Validate weight
-elif weight <= 20 or weight >= 80:
+if weight <= 20 or weight >= 80:
     is_valid = False
     error_msg = "Weight must be between 20kg and 80kg."
 # Validate creatinine concentration
-elif cr <= 0 or cr >= 100:
+if cr <= 0 or cr >= 100:
     is_valid = False
     error_msg = "Creatinine concentration must be between 0 μmol/l and 100 μmol/l."
 # Validate gender
-elif gender not in ["male", "female"]:
+if gender not in ["male", "female"]:
     is_valid = False
     error_msg = "Gender must be 'male' or 'female'."
 

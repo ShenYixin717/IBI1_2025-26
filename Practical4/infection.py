@@ -31,4 +31,4 @@ while current_infected < total_students:
 
 # Loop ends, print total days required
 print("-" * 30)
-print(f"全部{total_students}名学生感染共耗时: {days}天")
+print(f"All the {total_students} students would be infected after {days} days")
