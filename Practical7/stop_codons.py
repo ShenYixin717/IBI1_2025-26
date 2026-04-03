@@ -1,48 +1,40 @@
 import re
-import os
 
 start = 'ATG'
 stop = 'TAG|TGA|TAA'
 
-# location of the file
-script_dir = os.path.dirname(os.path.abspath(__file__))
-fasta_file = os.path.join(script_dir, "Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa")
-output_file = os.path.join(script_dir, "stop_genes.fa")
-
 # read the inputfile
-record = {'id': [], 'seq': []}
-current_id = ""
+data = {"ID":[],"seq":[]}
 current_seq = ""
 
-with open(fasta_file, 'r') as f:
-    for line in f:
-        line = line.strip()
-        if line.startswith('>'):
-            if current_id:
-                record['id'].append(current_id)
-                record['seq'].append(current_seq)
-            current_id = line.split()[0][1:]
-            current_seq = ""
-        else:
-            current_seq += line
-if current_id:
-    record['id'].append(current_id)
-    record['seq'].append(current_seq)
-
-
+with open("Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa","r") as book:
+    text = book.readlines()
+for line in text:
+    line = line.strip()
+    if str(line)[0] == ">": 
+        if current_seq:
+            data["seq"].append(current_seq)
+        current_seq = ""
+        name = re.search(r'>(\S*_mRNA)',line)
+        if name:
+            data["ID"].append(name.group(1))
+    else:
+        current_seq += line
+data["seq"].append(current_seq)
 
 # open the output file for writing
-with open(output_file, "w") as out_f:
-    # iterate through each gene and search for stop codons
-    for i in range(len(record['id'])):
-        gene_id = record['id'][i]
-        seq = record['seq'][i]
-        found_stops = set() # delete duplicates
-        pattern = re.compile(rf'ATG(?:...)*?({stop})')
-        for match in pattern.finditer(seq):
-            if (match.end(1) - match.start()) % 3 == 0:
-                found_stops.add(match.group(1))
-        if found_stops:
-            out_f.write(f">{gene_id} {','.join(found_stops)}\n{seq}\n")
+with open("stop_genes.fa", "w") as out_f:
+    # handle each gene and search for stop codons
+    for i in range(len(data['ID'])):
+        seq = data['seq'][i]
+        stops = ['TAG','TGA','TAA']
+        existing_codes = ''
+        if str(seq)[0:3] == 'ATG':
+            for j in stops:
+                founding = re.search(rf'ATG(?:...)*?{j}',seq)
+                if founding:
+                    existing_codes += (f'{j} ')
+            out_f.write(f">{data['ID'][i]}; {existing_codes}\n")
+            out_f.write(f"{seq}\n")
 
-print(f"Results have been written to {output_file}")
+print(f"Results have been written to stop_genes.fa")

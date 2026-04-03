@@ -1,11 +1,6 @@
 import re
-import os
 import matplotlib.pyplot as plt
 
-# location of the file
-script_dir = os.path.dirname(os.path.abspath(__file__))
-input_file = os.path.join(script_dir, "stop_genes.fa")
-output_png = os.path.join(script_dir, "codon_usage_pie.png")
 
 # read the input words and find the longest ORF
 end_code=['TAG', 'TGA', 'TAA']
@@ -18,36 +13,30 @@ while True:
 
 
 # read the input file
-file_record = {"id": [], "seq": [], "ending": [], "length": []}
+file_record = {"id": [], "seq": []}
 id = ""
 seq = ""
-with open(input_file, 'r') as f:
-    for line in f:
-        if line.startswith('>'):
+with open("stop_genes.fa", 'r') as fa:
+    for line in fa:
+        if str(line)[0] == ">":
             id = line.strip().split()[0][1:]
             file_record['id'].append(id)
         else:
-            seq = line.strip()
-            file_record['seq'].append(seq)
-            file_record['length'].append(len(seq))
-            file_record['ending'].append(seq[-3:])
+            file_record['seq'].append(line)
 
 
-# delete the duplicated id and find the longest ORF
-temporary_id = file_record['id'][0]
-temporary_seq = file_record['seq'][0]
-temporary_length = file_record['length'][0]
+# find the longest ORF to replace the sequence
 ORF_record = []
-
+end_code = 'TAG|TGA|TAA'
 for i in range(len(file_record['id'])):
-    if file_record['id'][i] == temporary_id:
-        if file_record['length'][i] > temporary_length:
-            temporary_seq = file_record['seq'][i]
-            temporary_length = file_record['length'][i]
-    else:
-        if code == file_record['ending'][i-1]:
-            ORF_record.append(temporary_seq)
-
+    recent_seq = file_record['seq'][i]
+    possible_ORF = re.findall(f"ATG(?:...)*(?:{end_code})",recent_seq)
+    useful_seq = ""
+    for j in possible_ORF:
+        if len(j) > len(useful_seq):
+            useful_seq = j
+    if useful_seq[-3:] == code:
+        ORF_record.append(useful_seq)
 
 # count the codons
 counts={}
@@ -58,7 +47,6 @@ for i in range(len(ORF_record)):
             counts[codon] += 1
         else:
             counts[codon] = 1
-print(counts)
 
 
 # draw a pie chart
@@ -70,6 +58,6 @@ plt.pie(counts.values(), labels=counts.keys(), colors=colors*10,
 plt.title(f'Codon Usage for {code}', fontsize=14, fontweight='bold')
 plt.axis('equal')
 plt.tight_layout()
-plt.savefig(output_png, bbox_inches='tight')
+plt.savefig("codon_usage_pie.png", bbox_inches='tight')
 plt.show()
 plt.close()
