@@ -1,7 +1,6 @@
 import re
 
 start = 'ATG'
-stop = 'TAG|TGA|TAA'
 
 # read the inputfile
 data = {"ID":[],"seq":[]}
@@ -31,10 +30,11 @@ with open("stop_genes.fa", "w") as out_f:
         existing_codes = ''
         if str(seq)[0:3] == 'ATG':
             for j in stops:
-                founding = re.search(rf'ATG(?:...)*?{j}',seq)
+                founding = re.search(rf'ATG(?:(?!TAG|TGA|TAA)(...)*?{j}', seq)
                 if founding:
                     existing_codes += (f'{j} ')
-            out_f.write(f">{data['ID'][i]}; {existing_codes}\n")
-            out_f.write(f"{seq}\n")
+            if existing_codes:
+                out_f.write(f">{data['ID'][i]}; {existing_codes}\n")
+                out_f.write(f"{seq}\n")
 
 print(f"Results have been written to stop_genes.fa")
