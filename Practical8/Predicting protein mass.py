@@ -27,8 +27,8 @@ def calculate_protein_mass(seq):
         if i not in amino_acid_mass:
             return("The sequence is incorrect")
         mass += amino_acid_mass[i]
-    return(f"The mass of the protein is {mass}")
+    return(f"The mass of the protein is {mass:.2f}")
 
 #example
-sequence = "DQKEM"
+sequence = "DQKEMTVPS"
 print(calculate_protein_mass(sequence))
