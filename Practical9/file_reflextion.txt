@@ -1,0 +1,6 @@
+Reflection on the Practical
+Overall, this practical was a challenging parts.
+The basic SIR model was relatively easy to understand and implement, as the logic was clear and followed standard probabilistic rules. The vaccination extension was fun because it showed real-world meaning like herd immunity.
+The most difficult part was the 2D spatial SIR model. Handling grid boundaries, 8-neighbor infection, and updating the population without overwriting values required careful thinking. Debugging issues like negative populations or out-of-bounds errors was challenging but helpful.
+I enjoyed the visualization parts the most, especially seeing the disease spread across the 2D grid. It made the model feel concrete and realistic.
+The most important thing I learned is how probabilistic models work in both well-mixed and spatial populations, and how small changes in parameters can completely change disease outcomes.
