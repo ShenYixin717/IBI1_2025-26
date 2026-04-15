@@ -2,7 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#define the basic variables of the model
+# define the basic variables of the model
 S = 9999
 I = 1
 R = 0
@@ -54,6 +54,6 @@ plt.title("SIR model", fontsize = 14)
 plt.xlabel("time",fontsize=12)
 plt.ylabel("number of people",fontsize=12)
 plt.legend()
-plt.savefig ("SIR.png")
+plt.savefig("SIR",format="png")
 plt.show()
 
