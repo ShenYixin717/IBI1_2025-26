@@ -1,4 +1,4 @@
 Question: What is the distribution of DALYs across all countries in 2019?
-Code line number: 43
+Code line number: 45
 Result discussion: The boxplot shows the overall distribution of 2019 DALYs. The situation of most countries are at lower levels, 
 while several countries have extremely high DALYs as outliers. This indicates an inequalities in sudden disease like COVID-19.

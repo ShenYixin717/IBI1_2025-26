@@ -39,10 +39,12 @@ plt.plot(country_data.Year, country_data.DALYs, 'b+')
 plt.xlabel("Year")
 plt.ylabel("DALYs")
 plt.title("DALYs over time in the minmum country")
+plt.savefig("DALYs over time in the minmum country.png")
 plt.show()
 
 # Question: What is the DALYs distribution in 2019?
-plt.boxplot(recent_data.DALYs.dropna())
+plt.boxplot(recent_data.DALYs.dropna())  #Clear null values
 plt.title("2019 DALYs Distribution")
 plt.ylabel("DALYs")
+plt.savefig("2019 DALYs Distribution.png")
 plt.show()
