@@ -1,0 +1,2 @@
+The only problem in feedback is that, the answer of the question in practical4 mystery_code is wrong.
+I mistakes the number of random digit. So I just recheck the code and revise the answer.
