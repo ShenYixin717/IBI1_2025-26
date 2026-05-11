@@ -27,14 +27,12 @@ with open("stop_genes.fa", "w") as out_f:
     for i in range(len(data['ID'])):
         seq = data['seq'][i]
         stops = ['TAG','TGA','TAA']
-        existing_codes = ''
+        existing_codes = []
         if str(seq)[0:3] == 'ATG':
-            for j in stops:
-                founding = re.search(rf'ATG(?:(?!TAG|TGA|TAA)(...)*?{j}', seq)
-                if founding:
-                    existing_codes += (f'{j} ')
-            if existing_codes:
-                out_f.write(f">{data['ID'][i]}; {existing_codes}\n")
+            found_stops = re.findall(r'(?:.{3})*?(TAG|TGA|TAA)', seq)
+            existing_codes = " ".join(found_stops)
+            if existing_codes != []:
+                out_f.write(f">{data['ID'][i]} {existing_codes}\n")
                 out_f.write(f"{seq}\n")
 
 print(f"Results have been written to stop_genes.fa")
