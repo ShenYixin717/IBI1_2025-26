@@ -23,8 +23,13 @@ Simulation process for each vaccination rate:
 for vax_rate in vax_rates:
     # Initialize population with vaccination
     R = int(N * vax_rate)
-    I = 1
-    S = N - R - I
+    # Ensure that we do not set an initial infected person when population is full
+    if R < N:
+        I = 1          # one initial infected person if possible
+    else:
+        I = 0          # if everyone is vaccinated, no infection
+    S = N - R - I      # S will never be negative because R + I <= N
+    
     arr_I = [I]
     
     # Time loop for 1000 steps
