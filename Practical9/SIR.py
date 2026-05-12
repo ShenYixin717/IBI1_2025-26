@@ -54,6 +54,6 @@ plt.title("SIR model", fontsize = 14)
 plt.xlabel("time",fontsize=12)
 plt.ylabel("number of people",fontsize=12)
 plt.legend()
-plt.savefig("SIR",format="png")
+plt.savefig("SIR.png")
 plt.show()
 
