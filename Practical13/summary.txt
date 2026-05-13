@@ -1,0 +1,20 @@
+The human DLX5 protein (UniProt ID P56178) has a length of 289 amino acids, and localises 
+primarily to the cell nucleus, consistent with its function as a DNA-binding developmental 
+regulator.
+
+This practical aimed to compare the evolutionary conservation of the DLX5 homeobox protein 
+between Homo sapiens and Mus musculus, using UniProt BLAST and Python, ungapped global alignment 
+script with the BLOSUM62 scoring matrix.
+
+Online UniProt BLAST confirmed DLX5 is highly conserved across mammalian species. The pairwise 
+alignment results showed that human and mouse DLX5 achieved a BLOSUM62 total score of 1490 and 
+a sequence identity of 96.54%, indicating extremely strong structural and functional homology. 
+In contrast, alignments between either native DLX5 sequence and a randomly generated protein 
+reference yielded strongly negative total scores and extremely low identity (~6.5–7.0%), close 
+to the random baseline expectation.
+
+The large discrepancy between native species alignment and random control demonstrates that 
+the high similarity is not due to chance. The high conservation of DLX5 across divergent mammals 
+reflects its critical, constrained role in embryonic development and gene regulation. 
+In conclusion, this exercise verified the use of substitution matrices and sequence alignment to 
+infer evolutionary relatedness, and confirmed DLX5 as an deeply conserved essential protein.
